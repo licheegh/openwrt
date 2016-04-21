@@ -7,7 +7,7 @@
 	model = "MediaTek LinkIt Smart 7688";
 
 	chosen {
-		bootargs = "console=ttyS2,57600";
+		bootargs = "console=ttyS0,57600";
 	};
 
 	memory@0 {
@@ -65,7 +65,7 @@
 				compatible = "mx25l25635e";
 				reg = <0 0>;
 				linux,modalias = "m25p80", "mx25l25635e";
-				spi-max-frequency = <40000000>;
+				spi-max-frequency = <100000000>;
 				m25p,chunked-io = <31>;
 
 				partition@0 {
@@ -123,8 +123,9 @@
 
 	sdhci@10130000 {
 		status = "okay";
-		mediatek,cd-high;
-//		mediatek,cd-poll;
+//		mediatek,cd-high;
+		mediatek,cd-low;
+//  		mediatek,cd-poll;
 	};
 
 	bootstrap {
