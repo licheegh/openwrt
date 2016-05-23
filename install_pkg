@@ -1,1 +1,4 @@
 scripts/feeds install mtk-sdk-wifi
+scripts/feeds install python
+scripts/feeds install libmraa
+scripts/feeds install libupm-adxl345
