@@ -1,0 +1,24 @@
+=== modified file 'setup.py'
+--- a/setup.py	2013-11-30 15:05:37.950281127 +0100
++++ b/setup.py	2013-11-30 15:02:57.354077526 +0100
+@@ -1,9 +1,8 @@
+-import setuptools
+ import os
+ import sys
+ import distutils.spawn
+-from setuptools import setup, Extension
+-from setuptools.command.build_ext import build_ext
++from distutils.core import setup, Extension
++from distutils.command.build_ext import build_ext
+ from distutils.errors import *
+ import pickle
+ 
+@@ -392,7 +391,7 @@ class my_build_ext(build_ext):
+ 
+ # Don't bother detecting socket ioctls on Windows
+ if not getattr(sys, 'getwindowsversion', None):
+-    setuptools.command.build_ext.build_ext = my_build_ext
++    distutils.command.build_ext.build_ext = my_build_ext
+ 
+ setup (name='netifaces',
+        version=__version__,
