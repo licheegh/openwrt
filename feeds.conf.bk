@@ -14,4 +14,3 @@ src-git management https://github.com/openwrt-management/packages.git;for-15.05
 #src-svn lxde svn://svn.openwrt.org/openwrt/feeds/lxde
 #src-link custom /usr/src/openwrt/custom-feed
 src-git linkit https://github.com/licheegh/linkit-smart-7688-feed.git
-src-git psutil https://github.com/mdsmith-Au/psutil-openwrt.git
