@@ -1,0 +1,57 @@
+diff --git a/src/mips/mediatek.c b/src/mips/mediatek.c
+index 70cd914..39788f4 100644
+--- a/src/mips/mediatek.c
++++ b/src/mips/mediatek.c
+@@ -194,7 +194,9 @@ enum {
+ 	MUX_UART2,
+ 	MUX_PWM0,
+ 	MUX_PWM1,
+-	MUX_EPHY,
++	MUX_EPHY4,
++	MUX_EPHY1,
++	MUX_EPHY0,
+ 	MUX_WLED,
+ 	__MUX_MAX,
+ };
+@@ -257,7 +259,17 @@ static struct pinmux {
+ 		.shift = 30,
+ 		.mask = 0x3,
+ 	}, {
+-		.name = "ephy",
++		.name = "ephy4",
++		.func = { "ephy", "gpio", NULL, NULL },
++		.shift = 42,
++		.mask = 0x3,
++	}, {
++		.name = "ephy1",
++		.func = { "ephy", "gpio", NULL, NULL },
++		.shift = 36,
++		.mask = 0x3,
++	}, {
++		.name = "ephy0",
+ 		.func = { "ephy", "gpio", NULL, NULL },
+ 		.shift = 34,
+ 		.mask = 0x3,
+@@ -404,10 +416,21 @@ mraa_mtk_linkit()
+         b->pins[i].capabilites = (mraa_pincapabilities_t){ 0, 0, 0, 0, 0, 0, 0, 0 };
+     }
+ 
++
++    strncpy(b->pins[39].name, "GPIO39", MRAA_PIN_NAME_SIZE);
++    b->pins[39].capabilites = (mraa_pincapabilities_t){ 1, 1, 0, 0, 0, 0, 0, 0 };
++    b->pins[39].gpio.pinmap = 39;
++    gpio_mux_groups[39] = MUX_EPHY4;
++
++    strncpy(b->pins[42].name, "GPIO42", MRAA_PIN_NAME_SIZE);
++    b->pins[42].capabilites = (mraa_pincapabilities_t){ 1, 1, 0, 0, 0, 0, 0, 0 };
++    b->pins[42].gpio.pinmap = 42;
++    gpio_mux_groups[42] = MUX_EPHY1;
++
+     strncpy(b->pins[43].name, "GPIO43", MRAA_PIN_NAME_SIZE);
+     b->pins[43].capabilites = (mraa_pincapabilities_t){ 1, 1, 0, 0, 0, 0, 0, 0 };
+     b->pins[43].gpio.pinmap = 43;
+-    gpio_mux_groups[43] = MUX_EPHY;
++    gpio_mux_groups[43] = MUX_EPHY0;
+ 
+     strncpy(b->pins[20].name, "GPIO20", MRAA_PIN_NAME_SIZE);
+     b->pins[20].capabilites = (mraa_pincapabilities_t){ 1, 1, 1, 0, 0, 0, 0, 1 };

@@ -4,3 +4,5 @@ scripts/feeds install python
 scripts/feeds install libmraa
 scripts/feeds install libupm-adxl345
 scripts/feeds install python-psutil
+scripts/feeds install FlashMAC
+cp 0005-add-io.patch feeds/packages/libs/libmraa/patches/ 
