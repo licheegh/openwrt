@@ -1,3 +1,0 @@
-#!/bin/sh
-
-octoprint --iknowwhatimdoing -b /mnt/octoprint-config
